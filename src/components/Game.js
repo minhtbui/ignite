@@ -1,4 +1,5 @@
 import React from 'react';
+import { resize } from '../util';
 //Styling and Animation
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -22,7 +23,11 @@ const Game = ({ id, name, released, img }) => {
          <Link to={`/game/${id}`}>
             <motion.h3 layoutId={`title ${stringID}`}>{name}</motion.h3>
             <p>Realse: {released}</p>
-            <motion.img layoutId={`img ${stringID}`} src={img} alt={name} />
+            <motion.img
+               layoutId={`img ${stringID}`}
+               src={resize(img, 640)}
+               alt={name}
+            />
          </Link>
       </StyledGame>
    );

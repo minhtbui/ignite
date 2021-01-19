@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { resize } from '../util';
 //Styling and Animation
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -47,7 +48,7 @@ const GameDetail = ({ layoutId }) => {
                   <motion.img
                      layoutId={`img ${layoutId}`}
                      variants={variant}
-                     src={game.background_image}
+                     src={resize(game.background_image, 1280)}
                      alt=''
                   />
                </Media>
@@ -56,7 +57,11 @@ const GameDetail = ({ layoutId }) => {
                </Desc>
                <div className='gallery'>
                   {screen.map((data) => (
-                     <img src={data.image} key={data.id} alt={game.name} />
+                     <img
+                        src={resize(data.image, 1280)}
+                        key={data.id}
+                        alt={game.name}
+                     />
                   ))}
                </div>
             </Detail>
@@ -129,7 +134,7 @@ const Desc = styled(motion.div)`
 
 const variant = {
    transition: {
-      duration: 0.5,
+      duration: 0.7,
    },
 };
 export default GameDetail;
